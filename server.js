@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.urlencoded({ extended: true}));
-app.use(express.join())
+app.use(express.json())
 app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness", {
@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness", {
 });
 
 //routes 
-app.use(require("./routes/api.js"))
+app.use(require("./routes/homeroutes.js"))
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
